@@ -50,6 +50,13 @@ const typeDefs = gql`
       }
     }
   }
+    addComment(title: "I also love Koala Bears, more than anything!") {
+      _id
+      title
+      body
+    }
+  }
+}
 `;
 
 //export the typeDefs
