@@ -14,6 +14,7 @@ const Home = () => {
           <CarouselItem>Testimony 3</CarouselItem>
         </Carousel>
       </div>
+      <button>Testimonies</button>
     </main>
   );
 };
