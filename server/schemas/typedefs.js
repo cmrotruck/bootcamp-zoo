@@ -43,14 +43,14 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
-    addPost(title: "I love Koala Bears!") {
+    addPost(title: String!) {
         _id
         title
         body
       }
     }
   }
-    addComment(title: "I also love Koala Bears, more than anything!") {
+    addComment(title: String!) {
       _id
       title
       body
