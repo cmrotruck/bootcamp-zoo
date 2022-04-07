@@ -15,6 +15,7 @@ import NoMatch from "./pages/NoMatch";
 import SingleThought from "./pages/SingleThought";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import About from "./pages/About";
 
 const httpLink = createHttpLink({ uri: "/graphql" });
 const authLink = setContext((_, { headers }) => {
@@ -45,6 +46,7 @@ function App() {
               <Route exact path="/thought" component={SingleThought} />
               <Route exact path="/profile/:username?" component={Profile} />
               <Route exact path="/thought/:id" component={SingleThought} />
+              <Route exact path="/about" component={About} />
 
               <Route component={NoMatch} />
             </Switch>
