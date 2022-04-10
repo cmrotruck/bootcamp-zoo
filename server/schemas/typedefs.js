@@ -51,20 +51,8 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
-    addPost(title: String!) {
-        _id
-        title
-        body
-      }
-    }
-  }
-    addComment(title: String!) {
-      _id
-      title
-      body
-    }
-  }
-}
+    addPost(_id: ID!, title: String!, body: String!): User
+    addReply(_id: ID!, title: String!, body: String!): User
 `;
 
 //export the typeDefs
