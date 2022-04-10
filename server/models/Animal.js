@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const postSchema = require("./Post");
 const dateFormat = require("../utils/dateFormat");
 
 const animalSchema = new Schema(
@@ -28,6 +29,7 @@ const animalSchema = new Schema(
       type: Number,
       default: 0,
     },
+    posts: [postSchema]
   },
   {
     toJSON: {
@@ -35,6 +37,10 @@ const animalSchema = new Schema(
     },
   }
 );
+
+postSchema.virtual('postCount').get(function() {
+  return this.posts.length;
+})
 
 const Animal = model("Animal", animalSchema);
 
