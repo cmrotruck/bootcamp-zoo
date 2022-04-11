@@ -16,13 +16,7 @@ export default function ProjectCard(props) {
       onMouseEnter={handleShow}
       onMouseLeave={handleHide}
     >
-      <Image
-        className="cardImage"
-        src={screenshot}
-        alt="screenshot"
-        wrapped
-        ui={true}
-      />
+      <Image className="animalImage" src={screenshot} alt="screenshot" rounded/>
       <Card.Content>
         <Card.Header>{title}</Card.Header>
         <Card.Meta>Created in {created}</Card.Meta>
