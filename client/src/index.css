@@ -131,9 +131,47 @@ nav a:hover {
   display: inline;
 }
 
-/* Donate page*/
+/* IMAGES */
 .animalImage {
   border: 5px solid var(--secondary);
+}
+
+/* Carousel */
+.carousel {
+  overflow: hidden;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-item{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  color: #000;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators > button {
+  margin: 5px;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  font-size: 14px;
+  width: 50px;
+}
+
+.indicators > button.active {
+  background-color: #daad86;
+  color: #000;
 }
 
 /* CARDS */
