@@ -4,9 +4,6 @@ const db = require('../config/connection');
 const { User, Post, Comment, Reply } = require('../models');
 
 db.once('open', async () => {
-  await Reply.deleteMany({});
-  await Comment.deleteMany({});
-  await Post.deleteMany({});
   await User.deleteMany({});
 
   // create user data
