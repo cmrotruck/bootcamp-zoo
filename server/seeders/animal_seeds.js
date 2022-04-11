@@ -1,6 +1,17 @@
-const { Animal } = require("../models");
+const mongoose = require('mongoose');
+const Animal = require("../models/Animal");
 
-const animalData = [
+mongoose
+    .connect('mongodb://localhost:27017/test', {
+    useNewUrlParser: true, useUnifiedTopology: true })
+        .then(() => {
+            console.log('MONGO CONNECTION OPEN!!');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+const seedAnimals = [
     {
         breed: "American Alligator",
         animalText: "Population status is least concern. With protection from hunting, and protection of habitat provided to the alligators in the early 1970s, alligator populations are no longer threatened. However, they are still protected due to the similarity of appearance to the American crocodile, but regulated hunting is allowed in many states.",
@@ -63,6 +74,11 @@ const animalData = [
     },
 ];
 
-const seedAnimals = () => Animal.bulkCreate(animalData);
+const seedDB = async () => {
+    await Animal.deleteMany({});
+    await Animal.insertMany(seedAnimals);
+};
 
-module.exports = seedAnimals;
+seedDB().then(() => {
+    mongoose.connection.close();
+});

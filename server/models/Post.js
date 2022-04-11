@@ -36,6 +36,6 @@ postSchema.virtual("commentCount").get(function () {
   return this.comments.length;
 });
 
-// const Post = model("Post", postSchema);
+const Post = model("Post", postSchema);
 
-module.exports = postSchema;
+module.exports = Post;

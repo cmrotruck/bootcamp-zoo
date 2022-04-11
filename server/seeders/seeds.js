@@ -5,7 +5,7 @@ const { User, Post, Comment, Reply } = require("../models");
 
 db.once("open", async () => {
   await Reply.deleteMany({});
-  // await Comment.deleteMany({});
+  await Comment.deleteMany({});
   await Post.deleteMany({});
   await User.deleteMany({});
 
@@ -66,24 +66,34 @@ db.once("open", async () => {
     createdComments.push(createdComment);
   }
 
+  // console.log(createdComments);
+
   // create replys
+  let createdReplys = [];
   for (let i = 0; i < 100; i += 1) {
     const replyBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomCommentIndex = Math.floor(
-      Math.random() * createdComments.length
-    );
+    const randomCommentIndex = Math.floor(Math.random() * createdComments.length);
     const { _id: commentId } = createdComments[randomCommentIndex];
 
+    //we need to add to reply (reply.create)
+    const createdReply = await Reply.create({ replyBody, username });
+
+    //update post with _ID from reply
     await Comment.updateOne(
       { _id: commentId },
-      { $push: { replys: { replyBody, username } } },
+      { $push: { replys: createdReply._id } },
       { runValidators: true }
     );
+
+    createdReplys.push(createdReply);
   }
+
+  // console.log(createdReplys);
+  console.log(createdComments);
 
   console.log("all done!");
   process.exit(0);
