@@ -18,7 +18,12 @@ const commentSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    replies: [replySchema],
+    replies: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Reply",
+      },
+    ],
   },
   {
     toJSON: {
@@ -27,7 +32,7 @@ const commentSchema = new Schema(
   }
 );
 
-replySchema.virtual('replyCount').get(function() {
+commentSchema.virtual("replyCount").get(function () {
   return this.replys.length;
 });
 

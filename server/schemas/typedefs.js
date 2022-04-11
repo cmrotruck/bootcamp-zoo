@@ -39,6 +39,8 @@ const typeDefs = gql`
   }
   type Query {
     me: User
+    animals: [Animal]
+    animal(breed: String!): Animal
     users: [User]
     user(username: String!): User
     thoughts(username: String): [Thought]
@@ -53,6 +55,7 @@ const typeDefs = gql`
     addFriend(friendId: ID!): User
     addPost(_id: ID!, title: String!, body: String!): User
     addReply(_id: ID!, title: String!, body: String!): User
+  }
 `;
 
 //export the typeDefs

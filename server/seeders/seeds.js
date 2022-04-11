@@ -1,11 +1,11 @@
-const faker = require('faker');
+const faker = require("faker");
 
-const db = require('../config/connection');
-const { User, Post, Comment, Reply } = require('../models');
+const db = require("../config/connection");
+const { User, Post, Comment, Reply } = require("../models");
 
-db.once('open', async () => {
+db.once("open", async () => {
   await Reply.deleteMany({});
-  await Comment.deleteMany({});
+  // await Comment.deleteMany({});
   await Post.deleteMany({});
   await User.deleteMany({});
 
@@ -21,6 +21,7 @@ db.once('open', async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
+  // console.log(userData);
 
   // create posts
   let createdPosts = [];
@@ -39,8 +40,10 @@ db.once('open', async () => {
 
     createdPosts.push(createdPost);
   }
+  // console.log(createdPosts);
 
   // create comments
+  let createdComments = [];
   for (let i = 0; i < 100; i += 1) {
     const commentBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
@@ -50,11 +53,17 @@ db.once('open', async () => {
     const randomPostIndex = Math.floor(Math.random() * createdPosts.length);
     const { _id: postId } = createdPosts[randomPostIndex];
 
+    //we need to add to comment (comment.create)
+    const createdComment = await Comment.create({ commentBody, username });
+
+    //update post with _ID from comment
     await Post.updateOne(
       { _id: postId },
-      { $push: { comments: { commentBody, username } } },
+      { $push: { comments: createdComment._id } },
       { runValidators: true }
     );
+
+    createdComments.push(createdComment);
   }
 
   // create replys
@@ -64,7 +73,9 @@ db.once('open', async () => {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomCommentIndex = Math.floor(Math.random() * createdComments.length);
+    const randomCommentIndex = Math.floor(
+      Math.random() * createdComments.length
+    );
     const { _id: commentId } = createdComments[randomCommentIndex];
 
     await Comment.updateOne(
@@ -73,7 +84,7 @@ db.once('open', async () => {
       { runValidators: true }
     );
   }
-
-  console.log('all done!');
+  console.log(createdComments);
+  console.log("all done!");
   process.exit(0);
 });

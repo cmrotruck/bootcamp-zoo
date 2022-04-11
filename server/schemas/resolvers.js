@@ -1,4 +1,4 @@
-const { User, Thought, Animal } = require("../models");
+const { User, Animal } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -17,10 +17,10 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     animals: async () => {
-      return Animal.find().select("-_v");
+      return Animal.find();
     },
-    animal: async (parent, { id }) => {
-      return Animal.findOne({ id }).select("-_v");
+    animal: async (parent, { breed }) => {
+      return Animal.findOne({ breed }).select("-_v");
     },
     users: async () => {
       return User.find()
