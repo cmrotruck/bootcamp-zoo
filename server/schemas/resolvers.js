@@ -65,6 +65,9 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addAnimal: async (parentn, args) => {
+      const anmal = await Animal.create(args);
+    },
     addThought: async (parent, args, context) => {
       if (context.user) {
         const thought = await Thought.create({
