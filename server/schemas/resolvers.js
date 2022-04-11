@@ -16,12 +16,12 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    animals: async () => {
-      return Animal.find().select("-_v");
-    },
-    animal: async (parent, { id }) => {
-      return Animal.findOne({ id }).select("-_v");
-    },
+    // animals: async () => {
+    //   return Animal.find().select("-_v");
+    // },
+    // animal: async (parent, { id }) => {
+    //   return Animal.findOne({ id }).select("-_v");
+    // },
     users: async () => {
       return User.find()
         .select("-_v -password")

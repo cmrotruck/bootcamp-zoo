@@ -53,6 +53,7 @@ const typeDefs = gql`
     addFriend(friendId: ID!): User
     addPost(_id: ID!, title: String!, body: String!): User
     addReply(_id: ID!, title: String!, body: String!): User
+  }
 `;
 
 //export the typeDefs
