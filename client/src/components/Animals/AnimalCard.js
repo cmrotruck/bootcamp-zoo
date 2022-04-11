@@ -10,23 +10,29 @@ export default function ProjectCard(props) {
   const handleHide = () => setState(false);
 
   return (
-    <div>
-      <Card
-        dimmed={state === true ? "true" : "false"}
-        onMouseEnter={handleShow}
-        onMouseLeave={handleHide}
-      >
+    <Card
+      // className="AnimalCard"
+      dimmed={state === true ? "true" : "false"}
+      onMouseEnter={handleShow}
+      onMouseLeave={handleHide}
+    >
+      <Image
+        className="cardImage"
+        src={screenshot}
+        alt="screenshot"
+        wrapped
+        ui={true}
+      />
+      <Card.Content>
+        <Card.Header>{title}</Card.Header>
+        <Card.Meta>Created in {created}</Card.Meta>
+        <Card.Description>{description}</Card.Description>
+      </Card.Content>
+      <Card.Content extra>
         <Dimmer active={state} className="inverted">
           <Button className="primary">Donate!</Button>
         </Dimmer>
-        <Image src={screenshot} alt="screenshot" wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>{title}</Card.Header>
-          <Card.Meta>Created in {created}</Card.Meta>
-          <Card.Description>{description}</Card.Description>
-        </Card.Content>
-        <Card.Content extra></Card.Content>
-      </Card>
-    </div>
+      </Card.Content>
+    </Card>
   );
 }

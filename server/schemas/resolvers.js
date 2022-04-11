@@ -1,4 +1,4 @@
-const { User, Thought, Animal } = require("../models");
+const { User, Animal } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -17,10 +17,10 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     animals: async () => {
-      return Animal.find().select("-_v");
+      return Animal.find();
     },
-    animal: async (parent, { id }) => {
-      return Animal.findOne({ id }).select("-_v");
+    animal: async (parent, { breed }) => {
+      return Animal.findOne({ breed }).select("-_v");
     },
     users: async () => {
       return User.find()
@@ -109,6 +109,41 @@ const resolvers = {
         ).populate("friends");
 
         return updateUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addPost: async (parent, args, context) => {
+      if (context.user) {
+        const Post = await Post.create({
+          ...args,
+          username: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        );
+
+        return post;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    addReply: async (parent, { postId, replyBody }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postID },
+          {
+            $push: {
+              reactions: { replyBody, username: context.user.username },
+            },
+          },
+          { new: true, runValidators: true }
+        );
+
+        return updatedPost;
       }
 
       throw new AuthenticationError("You need to be logged in!");

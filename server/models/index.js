@@ -1,8 +1,7 @@
 const User = require("./User");
-// const Thought = require("./Thought");
-// const Animal = require("./Animal");
-const Post = require('./Post');
+const Post = require("./Post");
+const Animal = require("./Animal");
+const Reply = require("./Reply");
 const Comment = require("./Comment");
-const Reply = require("./Reply")
 
-module.exports = { User, Post, Comment, Reply };
+module.exports = { User, Post, Animal, Comment, Reply };
