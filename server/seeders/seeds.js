@@ -4,7 +4,9 @@ const db = require('../config/connection');
 const { User, Post, Comment, Reply } = require('../models');
 
 db.once('open', async () => {
-  await Thought.deleteMany({});
+  await Reply.deleteMany({});
+  await Comment.deleteMany({});
+  await Post.deleteMany({});
   await User.deleteMany({});
 
   // create user data
@@ -51,6 +53,23 @@ db.once('open', async () => {
     await Post.updateOne(
       { _id: postId },
       { $push: { comments: { commentBody, username } } },
+      { runValidators: true }
+    );
+  }
+
+  // create replys
+  for (let i = 0; i < 100; i += 1) {
+    const replyBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+
+    const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+    const { username } = createdUsers.ops[randomUserIndex];
+
+    const randomCommentIndex = Math.floor(Math.random() * createdComments.length);
+    const { _id: commentId } = createdComments[randomCommentIndex];
+
+    await Comment.updateOne(
+      { _id: commentId },
+      { $push: { replys: { replyBody, username } } },
       { runValidators: true }
     );
   }
