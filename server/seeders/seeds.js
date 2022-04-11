@@ -84,7 +84,7 @@ db.once("open", async () => {
       { runValidators: true }
     );
   }
-  console.log(createdComments);
+
   console.log("all done!");
   process.exit(0);
 });
