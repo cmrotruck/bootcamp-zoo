@@ -18,6 +18,7 @@ import Signup from "./pages/Signup";
 import About from "./pages/About";
 import Animal from "./pages/Animal";
 import Contact from "./pages/Contact";
+import Donate from "./pages/Donate";
 
 const httpLink = createHttpLink({ uri: "/graphql" });
 const authLink = setContext((_, { headers }) => {
@@ -51,6 +52,7 @@ function App() {
               <Route exact path="/about" component={About} />
               <Route exact path="/animals" component={Animal} />
               <Route exact path="/contact" component={Contact} />
+              <Route exact path="/donate" component={Donate} />
 
               <Route component={NoMatch} />
             </Switch>
