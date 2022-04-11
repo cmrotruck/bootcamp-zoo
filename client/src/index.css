@@ -131,6 +131,11 @@ nav a:hover {
   display: inline;
 }
 
+/* Donate page*/
+.animalImage {
+  border: 5px solid var(--secondary);
+}
+
 /* CARDS */
 .card {
   margin: 0 0 20px 0;
