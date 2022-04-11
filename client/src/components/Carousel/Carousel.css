@@ -11,7 +11,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 700px;
     color: #000;
 }
 
@@ -31,6 +31,6 @@
 }
 
 .indicators > button.active {
-    background-color: #99f7f2;
+    background-color: #daad86;
     color: #000;
 }

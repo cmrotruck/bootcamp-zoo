@@ -28,6 +28,12 @@ const animalSchema = new Schema(
       type: Number,
       default: 0,
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   {
     toJSON: {
@@ -35,6 +41,10 @@ const animalSchema = new Schema(
     },
   }
 );
+
+animalSchema.virtual("postCount").get(function () {
+  return this.posts.length;
+});
 
 const Animal = model("Animal", animalSchema);
 

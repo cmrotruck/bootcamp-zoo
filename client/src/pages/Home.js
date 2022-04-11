@@ -1,5 +1,9 @@
 import React from "react";
 import Carousel, { CarouselItem } from "../components/Carousel";
+import Reef from "../images/carousel/reef.jpg";
+import Bonobo from "../images/carousel/bonobo.jpg";
+import Bear from "../images/carousel/polarbear.jpg";
+import { Image } from "semantic-ui-react";
 
 const Home = () => {
   return (
@@ -9,12 +13,11 @@ const Home = () => {
       </div>
       <div className="home-carousel">
         <Carousel>
-          <CarouselItem>Testimony 1</CarouselItem>
-          <CarouselItem>Testimony 2</CarouselItem>
-          <CarouselItem>Testimony 3</CarouselItem>
+          <CarouselItem><Image className="carouselImage" src={Reef} alt="reef picture with facts" /></CarouselItem>
+          <CarouselItem><Image className="carouselImage" src={Bonobo} alt="bonobo picture with facts" /></CarouselItem>
+          <CarouselItem><Image className="carouselImage" src={Bear} alt="polar bear picture with facts" /></CarouselItem>
         </Carousel>
       </div>
-      <button>Testimonies</button>
     </main>
   );
 };
