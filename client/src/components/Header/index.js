@@ -23,7 +23,7 @@ const Header = () => {
           <Link to="/contact">Contact Us</Link>
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Me</Link>
+              {/* <Link to="/profile">Me</Link> */}
               <a href="/" onClick={logout}>
                 Logout
               </a>
