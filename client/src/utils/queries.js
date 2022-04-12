@@ -113,8 +113,8 @@ export const QUERY_ANIMALS = gql`
 `;
 
 export const QUERY_ANIMAL = gql`
-  {
-    animal(breed: $breed) {
+  query Animal($id: String!) {
+    animal(_id: $id) {
       _id
       breed
       animalText

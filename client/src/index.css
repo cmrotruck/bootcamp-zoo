@@ -147,12 +147,19 @@ nav a:hover {
   overflow: hidden;
 }
 
+/* Card Button */
+.cardButton {
+  background-color: blue !important;
+  color: white !important;
+  margin: 2% 0 !important;
+}
+
 .inner {
   white-space: nowrap;
   transition: transform 0.3s;
 }
 
-.carousel-item{
+.carousel-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
