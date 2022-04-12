@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const Animal = require("../models/Animal");
 
 mongoose
+<<<<<<< HEAD
   .connect("mongodb://localhost:27017/test", {
+=======
+  .connect("mongodb://localhost/bootcamp-zoo", {
+>>>>>>> 2f3295720b795d56fa49ae77faf3b17e5a1fa41f
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -27,9 +31,9 @@ const seedAnimals = [
     quantity: "6",
   },
   {
-    breed: "Cheeta",
+    breed: "Cheetah",
     animalText:
-      "Population status is valnerable. Cheetahs are the most endangered cat in Africa, only an estimated 7,000-10,000 remain. Molecular genetic studies on free-ranging and captive cheetahs have shown that the species lacks genetic variation, probably due to past inbreeding. The consequences of such genetic uniformity have led to reproductive abnormalities, high infant mortality, and greater susceptibility to disease, causing the species to be less adaptable and more vulnerable to ecological and environmental changes.",
+      "Population status is vulnerable. Cheetahs are the most endangered cat in Africa, only an estimated 7,000-10,000 remain. Molecular genetic studies on free-ranging and captive cheetahs have shown that the species lacks genetic variation, probably due to past inbreeding. The consequences of such genetic uniformity have led to reproductive abnormalities, high infant mortality, and greater susceptibility to disease, causing the species to be less adaptable and more vulnerable to ecological and environmental changes.",
     quantity: "5",
   },
   {
@@ -91,6 +95,7 @@ const seedAnimals = [
 const seedDB = async () => {
   await Animal.deleteMany({});
   await Animal.insertMany(seedAnimals);
+  console.log("Animal seeds complete!");
 };
 
 seedDB().then(() => {

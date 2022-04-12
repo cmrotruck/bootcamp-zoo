@@ -16,6 +16,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
 }
 
 html,
@@ -26,7 +27,6 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inconsolata", monospace;
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
@@ -40,7 +40,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Karla", sans-serif;
   font-weight: 700;
   margin: 5px 0;
   line-height: 1.25;
@@ -131,9 +130,61 @@ nav a:hover {
   display: inline;
 }
 
-/* Donate page*/
+.homeHeading {
+  text-align: center;
+  font-style: bold;
+  font-size: 40px;
+  /* text-decoration: underline var(--secondary); */
+}
+
+/* IMAGES */
 .animalImage {
   border: 5px solid var(--secondary);
+}
+
+/* Carousel */
+.carousel {
+  overflow: hidden;
+}
+
+/* Card Button */
+.cardButton {
+  background-color: blue !important;
+  color: white !important;
+  margin: 2% 0 !important;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+  color: #000;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators > button {
+  margin: 5px;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  font-size: 14px;
+  width: 50px;
+}
+
+.indicators > button.active {
+  background-color: #daad86;
+  color: #000;
 }
 
 /* CARDS */

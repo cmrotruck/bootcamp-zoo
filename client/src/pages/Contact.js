@@ -67,7 +67,7 @@ const Contact = () => {
                     setIsEmailValid(true);
                   }
                 }}
-                onMouseLeave={(e) => {
+                onBlur={(e) => {
                   setIsEmailValid(validateEmail(emailVal));
                 }}
                 error={

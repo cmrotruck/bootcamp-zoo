@@ -17,10 +17,10 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     animals: async () => {
-      return Animal.find();
+      return Animal.find().select("-_v").sort({ createdAt: -1 });
     },
-    animal: async (parent, { breed }) => {
-      return Animal.findOne({ breed }).select("-_v");
+    animal: async (parent, { _id }) => {
+      return Animal.findOne({ _id }).select("-_v");
     },
     users: async () => {
       return User.find()
@@ -66,7 +66,8 @@ const resolvers = {
       return { token, user };
     },
     addAnimal: async (parentn, args) => {
-      const anmal = await Animal.create(args);
+      const animal = await Animal.create(args);
+      return animal;
     },
     addThought: async (parent, args, context) => {
       if (context.user) {

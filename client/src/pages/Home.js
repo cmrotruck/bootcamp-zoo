@@ -8,9 +8,7 @@ import { Image } from "semantic-ui-react";
 const Home = () => {
   return (
     <main>
-      <div className="flex-row justify-space-between">
-        <p>Just a little change can have a big impact.</p>
-      </div>
+      <h1 className="homeHeading">Just a little change can have a BIG impact.</h1>
       <div className="home-carousel">
         <Carousel>
           <CarouselItem><Image className="carouselImage" src={Reef} alt="reef picture with facts" /></CarouselItem>
