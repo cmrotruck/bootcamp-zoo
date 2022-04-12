@@ -89,7 +89,7 @@ const seedAnimals = [
 ];
 
 const seedDB = async () => {
-  // await Animal.deleteMany({});
+  await Animal.deleteMany({});
   await Animal.insertMany(seedAnimals);
   console.log("Animal seeds complete!");
 };
