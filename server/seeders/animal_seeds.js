@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 const Animal = require("../models/Animal");
 
 mongoose
-<<<<<<< HEAD
-  .connect("mongodb://localhost:27017/test", {
-=======
   .connect("mongodb://localhost/bootcamp-zoo", {
->>>>>>> 2f3295720b795d56fa49ae77faf3b17e5a1fa41f
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
