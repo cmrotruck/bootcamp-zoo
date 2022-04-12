@@ -19,9 +19,9 @@ export default function ProjectCard(props) {
         <Comment.Group>
           <Header as='h3'>Comments</Header>
           <Comment.Content>
+          <Comment.Text>{commentBody}</Comment.Text>
+          <Comment.Metadata>{createdAt}</Comment.Metadata>
             <Comment.Author>{username}</Comment.Author>
-            <Comment.Metadata>{createdAt}</Comment.Metadata>
-            <Comment.Text>{commentBody}</Comment.Text>
             <Comment.Actions>
               <Comment.Action>Reply</Comment.Action>
             </Comment.Actions>

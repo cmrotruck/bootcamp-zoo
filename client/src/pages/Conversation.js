@@ -14,6 +14,7 @@ const Donate = () => {
                 username="animallover"
                 createdAt="4/4/22"
                 commentBody="This is a test comment."
+                postBody= "Cheetahs are so amazing!"
             />
         </main>
     );
