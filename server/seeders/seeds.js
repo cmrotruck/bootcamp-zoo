@@ -109,7 +109,7 @@ db.once("open", async () => {
       quantity: "6",
     },
     {
-      breed: "Cheetah",
+      breed: "Cheeta",
       animalText:
         "Population status is vulnerable. Cheetahs are the most endangered cat in Africa, only an estimated 7,000-10,000 remain. Molecular genetic studies on free-ranging and captive cheetahs have shown that the species lacks genetic variation, probably due to past inbreeding. The consequences of such genetic uniformity have led to reproductive abnormalities, high infant mortality, and greater susceptibility to disease, causing the species to be less adaptable and more vulnerable to ecological and environmental changes.",
       quantity: "5",
