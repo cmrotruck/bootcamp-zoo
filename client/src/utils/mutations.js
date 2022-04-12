@@ -23,3 +23,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// export const ADD_ANIMAL = gql`
+//   mutation AddAnimal($breed: String!, $animalText: String!, $quantity: Int) {
+//     addAnimal(breed: $breed, animalText: $animalText, quantity: $quantity) {
+//       _id
+//     }
+//   }
+// `;

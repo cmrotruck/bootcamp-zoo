@@ -13,7 +13,7 @@ const animalSchema = new Schema(
       type: String,
       required: "You need to describe the animal breed.",
       minlength: 1,
-      maxlength: 500,
+      maxlength: 1500,
     },
     createdAt: {
       type: Date,
