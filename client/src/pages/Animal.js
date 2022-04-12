@@ -1,13 +1,7 @@
 import React from "react";
 import AnimalCard from "../components/Animals/AnimalCard";
 import { Card, Dimmer, Segment } from "semantic-ui-react";
-<<<<<<< HEAD
-// import { useQuery } from "@apollo/client";
-
-import Cheeta from "../images/animals/cheetahTest.jpg";
-=======
 import Cheetah from "../images/animals/cheetah.JPG";
->>>>>>> caf15c5cf0d098c6272dc75f2d7cba1ef7fb446a
 
 const Animals = () => {
   return (
