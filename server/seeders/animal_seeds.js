@@ -1,15 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Animal = require("../models/Animal");
 
 mongoose
-    .connect('mongodb://localhost:27017/test', {
-    useNewUrlParser: true, useUnifiedTopology: true })
-        .then(() => {
-            console.log('MONGO CONNECTION OPEN!!');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+  .connect("mongodb://localhost/bootcamp-zoo", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MONGO CONNECTION OPEN!!");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const seedAnimals = [
     {
@@ -75,10 +77,11 @@ const seedAnimals = [
 ];
 
 const seedDB = async () => {
-    await Animal.deleteMany({});
-    await Animal.insertMany(seedAnimals);
+  await Animal.deleteMany({});
+  await Animal.insertMany(seedAnimals);
+  console.log("Animal seeds complete!");
 };
 
 seedDB().then(() => {
-    mongoose.connection.close();
+  mongoose.connection.close();
 });

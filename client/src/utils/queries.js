@@ -98,3 +98,29 @@ export const QUERY_ME_BASIC = gql`
     }
   }
 `;
+
+export const QUERY_ANIMALS = gql`
+  {
+    animals {
+      _id
+      breed
+      animalText
+      createdAt
+      quantity
+      donationTotal
+    }
+  }
+`;
+
+export const QUERY_ANIMAL = gql`
+  {
+    animal(breed: $breed) {
+      _id
+      breed
+      animalText
+      createdAt
+      quantity
+      donationTotal
+    }
+  }
+`;
