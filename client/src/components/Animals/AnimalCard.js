@@ -30,7 +30,7 @@ export default function ProjectCard(props) {
       />
       <Card.Content>
         <Card.Header>{breed}</Card.Header>
-        <Card.Meta>Created in {created}</Card.Meta>
+        <Card.Meta>Habitat last updated in {created}</Card.Meta>
         <Card.Description>{description}</Card.Description>
       </Card.Content>
       <Card.Content extra>

@@ -18,7 +18,7 @@ const Animals = () => {
           animals &&
           animals.map((animal) => {
             let breedName = animal.breed.replace(/\s/g, "").toLowerCase();
-            // console.log(breedName);
+            console.log(breedName);
             return (
               <AnimalCard
                 _id={animal._id}
