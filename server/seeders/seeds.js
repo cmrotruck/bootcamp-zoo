@@ -170,15 +170,25 @@ db.once("open", async () => {
     },
   ];
 
-  seedAnimals.map((animal) => {
+  let animals = [];
+
+  for (let i = 0; i < seedAnimals.length; i += 1) {
+    const animal = seedAnimals[i];
     const { breed, animalText, quantity } = animal;
-    const createdAnimal = Animal.create({ breed, animalText, quantity });
-    let animals = [];
+    const createdAnimal = await Animal.create({ breed, animalText, quantity });
+
     animals.push(createdAnimal);
-  });
+  }
+
+  // seedAnimals.map((animal) => {
+  //   const { breed, animalText, quantity } = animal;
+  //   const createdAnimal = await Animal.create({ breed, animalText, quantity });
+
+  //   animals.push(createdAnimal);
+  // });
 
   // console.log(createdReplys);
-  console.log(createdComments);
+  console.log(animals);
 
   console.log("all done!");
   process.exit(0);
