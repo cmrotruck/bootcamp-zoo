@@ -1,10 +1,10 @@
 :root {
   --primary: #659dbd;
-  --secondary: #8d8741;
-  --tertiary: #a8c4b6;
-  --quatrinary: #c4d9cd;
-  --light: #fbeec1;
-  --dark: #daad86;
+  --secondary: #f4e4c1;
+  --tertiary: #549FC4;
+  --quatrinary: #C5DBE7;
+  --light: #f7f9fb;
+  --dark: #275972;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
   --spacing-one: calc(1rem * 0.25);
@@ -31,7 +31,7 @@ body {
   line-height: 1.5;
   font-size: 20px;
   color: var(--dark);
-  background-color: #f3fffee1;
+  background-color: #f7f9fb;
 }
 
 h1,
@@ -134,12 +134,24 @@ nav a:hover {
   text-align: center;
   font-style: bold;
   font-size: 40px;
-  /* text-decoration: underline var(--secondary); */
+}
+
+.aboutHeading {
+  text-align: center;
+  font-style: bold;
+  font-size: 45px;
+  text-decoration: underline var(--tertiary);
+  padding: 15px;
+}
+
+.about {
+  font-size: 20px;
+  text-align: center;
 }
 
 /* IMAGES */
 .animalImage {
-  border: 5px solid var(--secondary);
+  border: 5px solid var(--dark);
 }
 
 /* Carousel */
@@ -183,8 +195,8 @@ nav a:hover {
 }
 
 .indicators > button.active {
-  background-color: #daad86;
-  color: #000;
+  background-color: var(--dark);
+  color: var(--light);
 }
 
 /* CARDS */
