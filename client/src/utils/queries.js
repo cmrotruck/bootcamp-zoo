@@ -124,3 +124,18 @@ export const QUERY_ANIMAL = gql`
     }
   }
 `;
+
+export const QUERY_POSTS = gql`
+  query Posts($animalId: ID!) {
+    posts(animalID: $animalId) {
+      postBody
+      username
+      createdAt
+      comments {
+        commentBody
+        username
+        createdAt
+      }
+    }
+  }
+`;

@@ -18,6 +18,10 @@ const postSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
+    animalID: {
+      type: String,
+      required: true,
+    },
     comments: [
       {
         type: Schema.Types.ObjectId,

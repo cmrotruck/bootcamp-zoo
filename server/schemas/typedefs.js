@@ -33,6 +33,19 @@ const typeDefs = gql`
     thoughts: [Thought]
     friends: [User]
   }
+  type Comment {
+    commentBody: String
+    username: String
+    createdAt: String
+  }
+  type Post {
+    _id: ID
+    postBody: String
+    username: String
+    createdAt: String
+    animalID: String
+    comments: [Comment]
+  }
   type Auth {
     token: ID!
     user: User
@@ -43,6 +56,8 @@ const typeDefs = gql`
     animal(_id: String!): Animal
     users: [User]
     user(username: String!): User
+    posts(animalID: ID!): Post
+    comments(_id: ID!): Comment
     thoughts(username: String): [Thought]
     thought(_id: ID!): Thought
   }
@@ -55,7 +70,7 @@ const typeDefs = gql`
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
     addPost(_id: ID!, title: String!, body: String!, breed: String!): User
-    addReply(_id: ID!, title: String!, body: String!): User
+    addComment(_id: ID!, commentBody: String!): User
   }
 `;
 

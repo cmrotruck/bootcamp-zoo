@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const replySchema = require("./Reply");
+// const commentSchema = require("./Comment");
 const dateFormat = require("../utils/dateFormat");
 
 const commentSchema = new Schema(
@@ -18,12 +18,6 @@ const commentSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    replies: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Reply",
-      },
-    ],
   },
   {
     toJSON: {
@@ -32,8 +26,8 @@ const commentSchema = new Schema(
   }
 );
 
-commentSchema.virtual("replyCount").get(function () {
-  return this.replys.length;
+commentSchema.virtual("commentCount").get(function () {
+  return this.comments.length;
 });
 
 const Comment = model("Comment", commentSchema);

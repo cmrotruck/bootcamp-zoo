@@ -34,6 +34,14 @@ const resolvers = {
         .populate("friends")
         .populate("thoughts");
     },
+    posts: async (parent, { animalID }) => {
+      const params = animalID ? { animalID } : {};
+      return Post.find(params).sort({ createdAt: -1 });
+    },
+    comments: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Comment.find(params).sort({ createdAt: -1 });
+    },
     thoughts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
