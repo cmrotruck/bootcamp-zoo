@@ -19,8 +19,8 @@ export const QUERY_THOUGHTS = gql`
 `;
 
 export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+  query posts($id: ID!) {
+    posts(_id: $id) {
       _id
       thoughtText
       createdAt

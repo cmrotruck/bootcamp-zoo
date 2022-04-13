@@ -29,6 +29,8 @@ const Donate = () => {
           breed={animal.breed}
           donations={"$" + animal.donationTotal}
           description={animal.animalText}
+          posts={animal.posts}
+          animalId={animalId}
           image={require(`../images/animals/${breedName}.JPG`)}
         />
       )}

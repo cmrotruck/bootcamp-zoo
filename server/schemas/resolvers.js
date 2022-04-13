@@ -1,4 +1,4 @@
-const { User, Animal } = require("../models");
+const { User, Animal, Post, Comment } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -38,10 +38,6 @@ const resolvers = {
       const params = animalID ? { animalID } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
-    comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Comment.find(params).sort({ createdAt: -1 });
-    },
     thoughts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
@@ -52,6 +48,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
+      console.log(args);
       const user = await User.create(args);
       const token = signToken(user);
 
@@ -127,13 +124,19 @@ const resolvers = {
     },
     addPost: async (parent, args, context) => {
       if (context.user) {
-        const Post = await Post.create({
+        const post = await Post.create({
           ...args,
           username: context.user.username,
         });
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        );
+
+        await Animal.findByIdAndUpdate(
+          { _id: context.animal._id },
           { $push: { posts: post._id } },
           { new: true }
         );
