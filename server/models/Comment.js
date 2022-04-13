@@ -18,12 +18,12 @@ const commentSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    replies: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Reply",
-      },
-    ],
+    // replies: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Reply",
+    //   },
+    // ],
   },
   {
     toJSON: {
@@ -36,6 +36,6 @@ commentSchema.virtual("replyCount").get(function () {
   return this.replys.length;
 });
 
-const Comment = model("Comment", commentSchema);
+// const Comment = model("Comment", commentSchema);
 
-module.exports = Comment;
+module.exports = commentSchema;

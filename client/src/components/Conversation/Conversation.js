@@ -7,8 +7,6 @@ import { Grid, Image, Button } from "semantic-ui-react";
 export default function ProjectCard(props) {
   const { animalId, breed, donations, description, image } = props;
 
-  console.log(animalId);
-
   const { loading, data } = useQuery(QUERY_POSTS, {
     variables: { animalId: animalId },
   });
@@ -21,7 +19,7 @@ export default function ProjectCard(props) {
   const [addPost, { error }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
-        // update thought array's cache
+        // update post array's cache
         // could potentially not exist yet, so wrap in a try/catch
         const { posts } = cache.readQuery({ query: QUERY_POSTS });
         cache.writeQuery({
@@ -43,6 +41,7 @@ export default function ProjectCard(props) {
 
   // update state based on form input changes
   const handleChange = (event) => {
+    event.preventDefault();
     if (event.target.value.length <= 280) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
@@ -55,7 +54,7 @@ export default function ProjectCard(props) {
 
     try {
       await addPost({
-        variables: { postText },
+        variables: { postText, animalId, breed },
       });
 
       // clear form value
@@ -65,6 +64,7 @@ export default function ProjectCard(props) {
       console.error(e);
     }
   };
+
   if (posts.length > 0) {
     return (
       <div>
@@ -145,7 +145,9 @@ export default function ProjectCard(props) {
             <Button className="primary">Donate!</Button>
           </Grid.Column>
         </Grid>
-
+        <div>
+          <h2>No posts yet. Start the conversation!</h2>
+        </div>
         <div>
           <p
             className={`m-0 ${
