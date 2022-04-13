@@ -135,11 +135,11 @@ const resolvers = {
           { new: true }
         );
 
-        // await Animal.findByIdAndUpdate(
-        //   { _id: context.animal._id },
-        //   { $push: { posts: post._id } },
-        //   { new: true }
-        // );
+        await Animal.findByIdAndUpdate(
+          { _id: context.animal._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        );
 
         return post;
       }
