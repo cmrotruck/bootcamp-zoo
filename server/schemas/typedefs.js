@@ -3,14 +3,6 @@ const { gql } = require("apollo-server-express");
 
 //create our typeDefs
 const typeDefs = gql`
-  type Animal {
-    _id: ID
-    breed: String
-    animalText: String
-    createdAt: String
-    quantity: Int
-    donationTotal: Int
-  }
   type Thought {
     _id: ID
     thoughtText: String
@@ -37,12 +29,35 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  type Post {
+    _id: ID
+    postBody: String
+    username: String
+    createdAt: String
+    animalID: String
+    comments: [Comment]
+  }
+  type Comment {
+    commentBody: String
+    username: String
+    createdAt: String
+  }
+  type Animal {
+    _id: ID
+    breed: String
+    animalText: String
+    createdAt: String
+    quantity: Int
+    donationTotal: Int
+    posts: [Post]
+  }
   type Query {
     me: User
     animals: [Animal]
     animal(_id: String!): Animal
     users: [User]
     user(username: String!): User
+    posts(animalID: ID!): Post
     thoughts(username: String): [Thought]
     thought(_id: ID!): Thought
   }
@@ -54,7 +69,7 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
-    addPost(_id: ID!, title: String!, body: String!, breed: String!): User
+    addPost(_id: ID!, title: String!, body: String!, animalId: String!): Post
     addReply(_id: ID!, title: String!, body: String!): User
   }
 `;

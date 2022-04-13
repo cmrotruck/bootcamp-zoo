@@ -19,8 +19,8 @@ export const QUERY_THOUGHTS = gql`
 `;
 
 export const QUERY_THOUGHT = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+  query posts($id: ID!) {
+    posts(_id: $id) {
       _id
       thoughtText
       createdAt
@@ -121,6 +121,21 @@ export const QUERY_ANIMAL = gql`
       createdAt
       quantity
       donationTotal
+    }
+  }
+`;
+
+export const QUERY_POSTS = gql`
+  query Posts($animalId: ID!) {
+    posts(animalID: $animalId) {
+      postBody
+      username
+      createdAt
+      comments {
+        commentBody
+        username
+        createdAt
+      }
     }
   }
 `;

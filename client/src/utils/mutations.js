@@ -31,3 +31,21 @@ export const ADD_ANIMAL = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation addPost($postBody: String!) {
+    addPost(postBody: $postBody) {
+      _id
+      postBody
+      createdAt
+      username
+      postCount
+      comments {
+        _id
+        commentBody
+        username
+        createdAt
+      }
+    }
+  }
+`;
