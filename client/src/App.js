@@ -52,7 +52,7 @@ function App() {
               <Route exact path="/about" component={About} />
               <Route exact path="/animals" component={Animal} />
               <Route exact path="/contact" component={Contact} />
-              <Route exact path="/conversation" component={Conversation} />
+              <Route exact path="/conversation/:id?" component={Conversation} />
 
               <Route component={NoMatch} />
             </Switch>

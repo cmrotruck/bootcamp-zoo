@@ -19,8 +19,8 @@ const resolvers = {
     animals: async () => {
       return Animal.find().select("-_v").sort({ createdAt: -1 });
     },
-    animal: async (parent, { breed }) => {
-      return Animal.findOne({ breed }).select("-_v");
+    animal: async (parent, { _id }) => {
+      return Animal.findOne({ _id }).select("-_v");
     },
     users: async () => {
       return User.find()
