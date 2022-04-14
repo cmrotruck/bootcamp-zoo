@@ -25,6 +25,19 @@ const typeDefs = gql`
     thoughts: [Thought]
     friends: [User]
   }
+  type Comment {
+    commentBody: String
+    username: String
+    createdAt: String
+  }
+  type Post {
+    _id: ID
+    postBody: String
+    username: String
+    createdAt: String
+    animalID: String
+    comments: [Comment]
+  }
   type Auth {
     token: ID!
     user: User
