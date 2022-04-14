@@ -6,7 +6,7 @@ bootcamp-zoo
 
 The bootcamp zoo is web application dedicated to animal habits and conservation efforts. We made this because we want to promote animal welfare and affect change.
 
-Link to deployed site:
+Link to deployed site: http://bootcamp-zoo.herokuapp.com/
 
 # Table of Contents
 
@@ -48,3 +48,9 @@ No tests are included.
   Ldavis96@live.com, crotruck@gmail.com and debleehall15@gmail.com
 
 # Screenshots
+![image](https://user-images.githubusercontent.com/65087262/163293454-93026e54-e7fe-41f2-bfae-e884cc79d8e7.png)
+![image](https://user-images.githubusercontent.com/65087262/163293697-c1d3912a-a408-4aaa-b601-9a584405e558.png)
+![image](https://user-images.githubusercontent.com/65087262/163293780-153311ad-6de0-4267-8ae8-c00f229b70bc.png)
+
+
+
