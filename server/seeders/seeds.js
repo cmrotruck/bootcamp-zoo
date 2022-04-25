@@ -5,7 +5,6 @@ const { User, Post, Comment, Reply, Animal } = require("../models");
 
 db.once("open", async () => {
   await Reply.deleteMany({});
-  await Comment.deleteMany({});
   await Post.deleteMany({});
   await User.deleteMany({});
   await Animal.deleteMany({});
@@ -41,7 +40,7 @@ db.once("open", async () => {
 
     createdPosts.push(createdPost);
   }
-  // console.log(createdPosts);
+  console.log(createdPosts);
 
   // create comments
   let createdComments = [];
