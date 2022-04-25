@@ -122,10 +122,12 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    addPost: async (parent, args, context) => {
+    addPost: async (parent, { postBody, animalID }, context) => {
+      console.log(postBody, animalID, context);
       if (context.user) {
         const post = await Post.create({
-          ...args,
+          postBody: postBody,
+          animalID: animalID,
           username: context.user.username,
         });
 
@@ -136,7 +138,7 @@ const resolvers = {
         );
 
         await Animal.findByIdAndUpdate(
-          { _id: context.animal._id },
+          { _id: args.animalID },
           { $push: { posts: post._id } },
           { new: true }
         );

@@ -22,7 +22,7 @@ db.once("open", async () => {
   }
 
   const createdUsers = await User.collection.insertMany(userData);
-  // console.log(userData);
+  console.log(userData);
 
   // create posts
   let createdPosts = [];
@@ -180,14 +180,6 @@ db.once("open", async () => {
     animals.push(createdAnimal);
   }
 
-  // seedAnimals.map((animal) => {
-  //   const { breed, animalText, quantity } = animal;
-  //   const createdAnimal = await Animal.create({ breed, animalText, quantity });
-
-  //   animals.push(createdAnimal);
-  // });
-
-  // console.log(createdReplys);
   console.log(animals);
 
   console.log("all done!");
