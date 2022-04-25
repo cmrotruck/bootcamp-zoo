@@ -54,7 +54,7 @@ export default function ProjectCard(props) {
 
     try {
       await addPost({
-        variables: { postText, animalId, breed },
+        variables: { postText, animalId },
       });
 
       // clear form value

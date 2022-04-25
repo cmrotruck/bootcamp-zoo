@@ -18,15 +18,6 @@ const commentSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-<<<<<<< HEAD
-    // replies: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Reply",
-    //   },
-    // ],
-=======
->>>>>>> f7f1ee052749f4167f52ad6c87a0b81a7503a1e6
   },
   {
     toJSON: {

@@ -5,7 +5,7 @@ const { User, Post, Comment, Reply, Animal } = require("../models");
 
 db.once("open", async () => {
   await Reply.deleteMany({});
-  await Comment.deleteMany({});
+  // await Comment.deleteMany({});
   await Post.deleteMany({});
   await User.deleteMany({});
   await Animal.deleteMany({});
