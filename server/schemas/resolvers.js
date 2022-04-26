@@ -38,6 +38,9 @@ const resolvers = {
       const params = animalID ? { animalID } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
+    allPosts: async () => {
+      return Post.find().select("-_v").sort({ createdAt: -1 });
+    },
     thoughts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Thought.find(params).sort({ createdAt: -1 });
@@ -122,14 +125,15 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    addPost: async (parent, { postBody, animalID }, context) => {
-      console.log(postBody, animalID, context);
+    addPost: async (parent, { postBody, animalId }, context) => {
+      console.log(postBody, animalId, context);
       if (context.user) {
         const post = await Post.create({
           postBody: postBody,
-          animalID: animalID,
+          animalId: animalId,
           username: context.user.username,
         });
+        console.log("Post: " + post._id);
 
         await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -138,7 +142,7 @@ const resolvers = {
         );
 
         await Animal.findByIdAndUpdate(
-          { _id: args.animalID },
+          { _id: animalId },
           { $push: { posts: post._id } },
           { new: true }
         );

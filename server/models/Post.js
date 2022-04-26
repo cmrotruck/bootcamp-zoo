@@ -18,7 +18,7 @@ const postSchema = new Schema(
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    animalID: {
+    animalId: {
       type: String,
       required: true,
     },

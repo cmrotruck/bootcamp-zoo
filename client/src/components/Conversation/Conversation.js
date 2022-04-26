@@ -5,7 +5,7 @@ import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 import { Grid, Image, Button } from "semantic-ui-react";
 
 export default function ProjectCard(props) {
-  const { animalId, breed, donations, description, image } = props;
+  const { username, animalId, breed, donations, description, image } = props;
 
   const { loading, data } = useQuery(QUERY_POSTS, {
     variables: { animalId: animalId },
@@ -54,7 +54,11 @@ export default function ProjectCard(props) {
 
     try {
       await addPost({
+<<<<<<< HEAD
         variables: { postBody, animalId },
+=======
+        variables: { postBody, animalId, username: "crotruck" },
+>>>>>>> ac91e7855556e04dfa1bdb8f0f0f18c6648cdbaf
       });
 
       // clear form value

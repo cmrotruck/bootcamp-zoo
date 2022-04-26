@@ -71,6 +71,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     posts(animalID: ID!): Post
+    allPosts: [Post]
     thoughts(username: String): [Thought]
     thought(_id: ID!): Thought
   }
