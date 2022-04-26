@@ -5,7 +5,7 @@ import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 import { Grid, Image, Button } from "semantic-ui-react";
 
 export default function ProjectCard(props) {
-  const { animalId, breed, donations, description, image } = props;
+  const { username, animalId, breed, donations, description, image } = props;
 
   const { loading, data } = useQuery(QUERY_POSTS, {
     variables: { animalId: animalId },
@@ -13,7 +13,7 @@ export default function ProjectCard(props) {
 
   const posts = data?.posts || {};
 
-  const [postText, setText] = useState("");
+  const [postBody, setText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -54,7 +54,7 @@ export default function ProjectCard(props) {
 
     try {
       await addPost({
-        variables: { postText, animalId },
+        variables: { postBody, animalId, username: "crotruck" },
       });
 
       // clear form value
@@ -116,7 +116,7 @@ export default function ProjectCard(props) {
                   >
                     <textarea
                       placeholder="Here's a new thought..."
-                      value={postText}
+                      value={postBody}
                       className="form-input col-12 col-md-9"
                       onChange={handleChange}
                     ></textarea>
@@ -163,7 +163,7 @@ export default function ProjectCard(props) {
           >
             <textarea
               placeholder="Here's a new thought..."
-              value={postText}
+              value={postBody}
               className="form-input col-12 col-md-9"
               onChange={handleChange}
             ></textarea>

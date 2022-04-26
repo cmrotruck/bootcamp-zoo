@@ -33,19 +33,11 @@ export const ADD_ANIMAL = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postBody: String!, $animalId: String!) {
-    addPost(postBody: $body, animalId: $animalId) {
-      _id
+  mutation addPost($postBody: String!, $animalId: String!, $username: String!) {
+    addPost(postBody: $postBody, animalId: $animalId, username: $username) {
       postBody
-      createdAt
       username
-      postCount
-      comments {
-        _id
-        commentBody
-        username
-        createdAt
-      }
+      animalID
     }
   }
 `;
