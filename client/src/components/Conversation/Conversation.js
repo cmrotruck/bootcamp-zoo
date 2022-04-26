@@ -13,7 +13,7 @@ export default function ProjectCard(props) {
 
   const posts = data?.posts || {};
 
-  const [postText, setText] = useState("");
+  const [postBody, setText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -54,7 +54,7 @@ export default function ProjectCard(props) {
 
     try {
       await addPost({
-        variables: { postText, animalId, breed },
+        variables: { postBody, animalId },
       });
 
       // clear form value
@@ -116,7 +116,7 @@ export default function ProjectCard(props) {
                   >
                     <textarea
                       placeholder="Here's a new thought..."
-                      value={postText}
+                      value={postBody}
                       className="form-input col-12 col-md-9"
                       onChange={handleChange}
                     ></textarea>
@@ -163,7 +163,7 @@ export default function ProjectCard(props) {
           >
             <textarea
               placeholder="Here's a new thought..."
-              value={postText}
+              value={postBody}
               className="form-input col-12 col-md-9"
               onChange={handleChange}
             ></textarea>

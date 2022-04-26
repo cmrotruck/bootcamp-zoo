@@ -82,7 +82,7 @@ const typeDefs = gql`
     addThought(thoughtText: String!): Thought
     addReaction(thoughtId: ID!, reactionBody: String!): Thought
     addFriend(friendId: ID!): User
-    addPost(postBody: String!, animalId: String!): Post
+    addPost(postBody: String!, animalId: String!, username: String!): Post
     addReply(_id: ID!, title: String!, body: String!): User
   }
 `;
